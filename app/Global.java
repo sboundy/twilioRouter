@@ -1,9 +1,12 @@
 
 
 import java.io.IOException;
+
 import models.EscalationPoliciesAndUsers;
 import models.IncidentsAndDetails;
+
 import org.json.JSONException;
+
 import scala.concurrent.duration.Duration;
 import pagerDutyIntegration.PagerDutyEscalationPolicy;
 import pagerDutyIntegration.PagerDutyIncident;
@@ -20,7 +23,7 @@ public class Global extends GlobalSettings  {
   
 			  Akka.system().scheduler().schedule(
 				        Duration.create(0, "milliseconds"),
-				        Duration.create(10, "seconds"),
+				        Duration.create(Play.application().configuration().getLong("application.pagerdutyPollingFrequency"), "seconds"),
 				        new Runnable() 
 				        {
 				            public void run() 
@@ -42,7 +45,7 @@ public class Global extends GlobalSettings  {
 				                }
 				                catch(IOException e){
 				                	
-				                	Logger.error("Error: ", e);
+				                	Logger.error("Error trying to retrieve data from Pager Duty: ", e);
 				                	
 				                }
 				                catch(JSONException j){};
