@@ -26,9 +26,9 @@ public class Application extends Controller {
 				if(request().getQueryString("secretKey").equals(Play.application().configuration().getString("application.secretKey"))){
 					
 					
-					String responseXML = "<Response><Say voice=\"woman\">" + Play.application().configuration().getString("application.responseMessage") + "</Say><Dial><Number>" + escalationPoliciesAndUsers.getePsAUs().get(0).getUsersAndDetails().get(0).getPhone_Number() + "</Number></Dial></Response>";
+					String responseXML = "<Response><Dial><Number>" + escalationPoliciesAndUsers.getePsAUs().get(0).getUsersAndDetails().get(0).getPhone_Number() + "</Number></Dial></Response>";
 					//TODO - pull correct user iteration from pagerduty
-					return ok("<Response><Say voice=\"woman\">" + responseXML + "</Say><Dial><Number>" + escalationPoliciesAndUsers.getePsAUs().get(0).getUsersAndDetails().get(0).getPhone_Number() + "</Number></Dial></Response>").as("text/xml");
+					return ok(responseXML).as("text/xml");
 				}
 				else {
 				

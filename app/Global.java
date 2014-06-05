@@ -30,16 +30,11 @@ public class Global extends GlobalSettings  {
 				            {
 				                try{
 				                	
-				                	EscalationPoliciesAndUsers escalationPoliciesAndUsers = EscalationPoliciesAndUsers.getInstance();
-				                	
+				                	EscalationPoliciesAndUsers escalationPoliciesAndUsers = EscalationPoliciesAndUsers.getInstance();   	
 				                	IncidentsAndDetails incidentsAndDetails = IncidentsAndDetails.getInstance();
-				   
 				                	escalationPoliciesAndUsers.setePsAUs(PagerDutyEscalationPolicy.retrievePolicyAndOnCallUsers());
-				                	
 				                	incidentsAndDetails.setClosedIncidents(PagerDutyIncident.retrieveIncidents("Closed", 4, true));
-				                	
 				                	incidentsAndDetails.setAcknowledgedIncidents(PagerDutyIncident.retrieveIncidents("Acknowledged", 0, false));
-				                	
 				                	incidentsAndDetails.setTriggeredIncidents(PagerDutyIncident.retrieveIncidents("Triggered", 0, false));				                	
           	
 				                }

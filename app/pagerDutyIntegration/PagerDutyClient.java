@@ -40,8 +40,6 @@ public class PagerDutyClient extends Controller {
 	private String url = new String();
 	
 	public HttpResponse retrieveOnCallResult(String userID) throws IOException {
-	    
-		//try+catch
 		
 	    HttpClient client = new DefaultHttpClient();
 	    HttpGet request = new HttpGet(onCallUrl+ userID + "/on_call?include[]=contact_methods");    
@@ -53,7 +51,6 @@ public class PagerDutyClient extends Controller {
 
 	public HttpResponse retrieveIncidentResult(String typeOfIncident, Integer sinceDate) throws IOException {
 		
-		//use case type here and also use
 		if(typeOfIncident.equals("Triggered")){
 			
 			url = triggeredIncidentUrl;
